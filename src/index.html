@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <title>MSDF font converter</title>
     <link rel="stylesheet" href="index.css" />
     <script defer src="render.js"></script>
   </head>
   <body>
-    <h1>💖 Hello world!</h1>
-    <p>Welcome to your Electron application.</p>
+    <h1>👶 MSDF font converter 🛠️</h1>
+    <p>(for Tooll3)</p>
     <form id="myForm">
       <label>FontSize:</label>
       <input type="number" id="FontSize" step="1" value="42" required>
@@ -18,12 +18,10 @@
       <input type="number" id="DistanceRange" step="1" value="4" required>
       <label>TexturePadding:</label>
       <input type="number" id="TexturePadding" step="1" value="4" required>
+
+
+      <div class="genButton" id="generateButton">Generate</div>
     </form>
-    Title: <input id="title"/>
-    <button id="btn" type="button">Set</button>
-
-    
-
-    <button id="generateButton">Generate BMFont</button>
+     
   </body>
 </html>
