@@ -1,8 +1,14 @@
-//modules
-//const electron = require('electron');
-//const ipcMain = electron.ipcMain;
-//const generateBMFont = require('msdf-bmfont-xml');
-//const fs = require('fs');
+const setButton = document.getElementById('btn')
+const titleInput = document.getElementById('title')
+setButton.addEventListener('click', () => {
+  const title = titleInput.value
+  window.electronAPI.setTitle(title)
+})
+
+document.getElementById('generateButton').addEventListener('click', () =>
+{
+    electronAPI.generateBMFont();
+});
 
 //options
 const form = document.getElementById('myForm');
@@ -33,5 +39,6 @@ form.addEventListener('input', () => {
     // Log the updated opt object to the console
     logOpt();
 });
+
 
 

@@ -7,17 +7,33 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+function handleSetTitle (event, title) {
+  const webContents = event.sender
+  const win = BrowserWindow.fromWebContents(webContents)
+  win.setTitle(title)
+}
+
+function handleSubmit (event, submit) {
+  const webContents = event.sender
+  
+}
+
+
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
+     
       preload: path.join(__dirname, 'preload.js'),
+      
       nodeIntegration: true
     },
   });
-
+  //contextIsolation: true, // This enables context isolation
+  //sandbox: true, // Enable the sandbox
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
@@ -30,6 +46,8 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  ipcMain.on('submit', handleSubmit), //ipc
+  ipcMain.on('set-title', handleSetTitle) //ipc
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -52,3 +70,5 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+
