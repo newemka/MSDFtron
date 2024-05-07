@@ -9,8 +9,11 @@ body {
 }
 form {
   max-width: 230px;
-}
 
+}
+.hidden {
+  display: none;
+}
 /* Button */
 .genButton{
   background-color: #ff3a9e;
@@ -29,6 +32,6 @@ form {
 
 .genButton:hover{
   background-color:black;
-  transform: rotate(-3deg);
+  /*transform: rotate(-3deg);*/
  
 }

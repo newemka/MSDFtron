@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'"/>
     <title>MSDF font converter</title>
     <link rel="stylesheet" href="index.css" />
     <script defer src="render.js"></script>
@@ -9,7 +10,17 @@
   <body>
     <h1>👶 MSDF font converter 🛠️</h1>
     <p>(for Tooll3)</p>
-    <form id="myForm">
+
+    <div>
+      <label>
+        <img src="./images/logo.svg" width="32" />
+        <span>Select an font to convert</span>
+        <input id="font" type="file" class="hidden" />
+      </label>
+    </div>
+    <form id="myForm" class="hidden">
+      <div class="genButton" id="getFont">Select a font</div>
+
       <label>FontSize:</label>
       <input type="number" id="FontSize" step="1" value="42" required>
       <label>TextureSize:</label>
@@ -21,7 +32,13 @@
 
 
       <div class="genButton" id="generateButton">Generate</div>
+      <button
+      type="submit">Convert</button>    
+
     </form>
-     
+    <p id="info"></p>
+    <p><strong>File: </strong><span id="filename"></span></p>
+    <p><strong>Output: </strong><span id="output-path"></span></p>
+    </div>
   </body>
 </html>
