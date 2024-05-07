@@ -87,19 +87,19 @@ const menu = [
 //respond to ipcRenderer convert
 
 ipcMain.on('font:convert', (e, options) => {
-  options.dest = path.join(os.homedir(), 'fontconverter');
+  //options.dest = path.join(os.homedir(), 'fontconverter');
   console.log(options);
   convertFont(options);
 });
 
 //convert font {fontPath, charset_path, fieldType, fontSize, textureSize, distanceRange, texturePadding}
-async function convertFont(options) {
+async function convertFont({fontPath, fontSize, distanceRange, texturePadding, textureSize}) {
   try {
      generateBMFont(
-      options.fontPath,
-      options.opt.charset_path,
-      
-         (error, textures, font)=> {
+      fontPath,
+      { fontSize, distanceRange, texturePadding, textureSize }, // Pass fontSize within an object
+
+      (error, textures, font)=> {
       if (error) {
           console.error('Error generating bitmap font:', error);
           return;

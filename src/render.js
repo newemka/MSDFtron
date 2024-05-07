@@ -4,17 +4,10 @@ const filename = document.querySelector('#filename');
 const outputPath = document.querySelector('#output-path');
 //options
 
-
-// Define the opt object
-//textureSize: [form.elements['TextureSize'].value, form.elements['TextureSize'].value], // Initialize with initial value
-const opt = {
-    charset_path: 'charsets/eascii.txt',
-    fieldType: 'msdf',
-    fontSize: form.elements['FontSize'].value, // Initialize with initial value
-    textureSize: [form.elements['TextureSize'], form.elements['TextureSize'].value],
-    distanceRange: form.elements['DistanceRange'].value, // Initialize with initial value
-    texturePadding: form.elements['TexturePadding'].value // Initialize with initial value
-};
+const fontSize = document.querySelector('#FontSize');
+const distanceRange = document.querySelector('#DistanceRange');
+const texturePadding = document.querySelector('#TexturePadding');
+const textureSize = document.querySelector('#TextureSize');
 
 function loadFont(e) {
     const file = e.target.files[0];
@@ -31,30 +24,25 @@ function loadFont(e) {
 
 }
 
-// Add event listener to the form's input event
-form.addEventListener('input', () => {
-    // Update opt properties based on form inputs
-    opt.fontSize = form.elements['FontSize'].value;
-    opt.textureSize = [form.elements['TextureSize'].value, form.elements['TextureSize'].value];
-    opt.distanceRange = form.elements['DistanceRange'].value;
-    opt.texturePadding = form.elements['TexturePadding'].value;
-
-    // Log the updated opt object to the console
-    logOpt();
-});
-
 // send Font data to main
 function sendFont(e) {
+    
     e.preventDefault();
-
+    const fontSizeValue = fontSize.value;
     const fontPath = font.files[0].path;
-
+    const distanceRangeValue = distanceRange.value;
+    const texturePaddingValue = texturePadding.value;
+    const textureSizeValue = [+textureSize.value,+textureSize.value];
     //Send to main using ipcRenderer
     ipcRenderer.send('font:convert', {
         fontPath,
-        opt
+        fontSize: fontSizeValue,
+        distanceRange: +distanceRangeValue, 
+        texturePadding: +texturePaddingValue,
+        textureSize: textureSizeValue,
 
-    })
+    });
+
 };
 
 // Make sure it's a font file
@@ -65,27 +53,14 @@ function isFileFont(file){
 
 font.addEventListener("change", loadFont);
 
-
-
-
    
 const information = document.getElementById('info')
 information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
 
-
-document.getElementById('generateButton').addEventListener('click', () =>
-{
-    electronAPI.generateMsdf();
-});
-
-
-
 // Function to log the opt object
 function logOpt() {
-    console.log('opt updated:', opt);
+    console.log('opt updated:', fontSize);
 }
-
-
 
 // Form submit listener
 form.addEventListener('submit', sendFont); 
