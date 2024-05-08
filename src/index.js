@@ -1,8 +1,15 @@
-const { app, BrowserWindow, ipcMain, Menu, shell} = require('electron');
+const { app, BrowserWindow, ipcMain, Menu, shell, nativeImage} = require('electron');
 const path = require('node:path');
 const os = require('os');
 const fs = require('fs');
 const generateBMFont = require('msdf-bmfont-xml');
+
+
+// icons 
+
+const appIcon = nativeImage.createFromPath('src/images/icons/Icon.png')
+
+
 
 //process.env.NODE_ENV = 'production';
 
@@ -19,7 +26,7 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-
+    icon: appIcon,
     width: isDev ? 1000 : 500,
     x : isDev ? 2000 : null,
     y: isDev ? 100 : null,
@@ -75,7 +82,7 @@ function createAboutWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-
+  
   createWindow();
 
   //implement menu
@@ -103,11 +110,12 @@ ipcMain.on('font:convert', (e, options) => {
 });
 
 //convert font {fontPath, charset_path, fieldType, fontSize, textureSize, distanceRange, texturePadding}
-async function convertFont({fontPath, fontSize, distanceRange, texturePadding, textureSize}) {
+async function convertFont({charset, fontPath, fontSize, distanceRange, texturePadding, textureSize}) {
   try {
      generateBMFont(
-      fontPath,
-      { fontSize, distanceRange, texturePadding, textureSize }, // Pass fontSize within an object
+      
+      fontPath, 
+      {charset, fontSize, distanceRange, texturePadding, textureSize }, // Pass fontSize within an object
 
       (error, textures, font)=> {
       if (error) {

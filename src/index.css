@@ -17,6 +17,12 @@ form {
 .hidden {
   display: none;
 }
+
+h1{
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
 /* Button */
 .genButton{
   background-color: #ff3a9e;
@@ -111,7 +117,7 @@ p{
   font-family: Roboto, sans-serif;
   font-size: 16px;
   font-weight: 500;
-
+  cursor: default;
   border: 1px solid rgba(255,255,255,0.3);
 
   -moz-text-shadow: 0 0 10px rgba(0,0,0,0.31);

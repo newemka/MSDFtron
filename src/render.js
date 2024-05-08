@@ -9,6 +9,17 @@ const distanceRange = document.querySelector('#DistanceRange');
 const texturePadding = document.querySelector('#TexturePadding');
 const textureSize = document.querySelector('#TextureSize');
 
+let charset; // Declare charset variable outside the scope of the promise chain
+
+charsetter.char().then(content => {
+    console.log(content);
+    charset = content; // Assign content to charset inside the promise chain
+}).catch(error => {
+    console.error('Error fetching file content:', error);
+    charset = ''; // Assign an empty string to charset in case of error
+});
+
+
 function loadFont(e) {
     const file = e.target.files[0];
 
@@ -28,6 +39,7 @@ function loadFont(e) {
 function sendFont(e) {
     
     e.preventDefault();
+    const charsetpathvalue = charset;
     const fontSizeValue = fontSize.value;
     const fontPath = font.files[0].path;
     const distanceRangeValue = distanceRange.value;
@@ -35,7 +47,9 @@ function sendFont(e) {
     const textureSizeValue = [+textureSize.value,+textureSize.value];
     //Send to main using ipcRenderer
     ipcRenderer.send('font:convert', {
+        
         fontPath,
+        charset: charsetpathvalue,
         fontSize: fontSizeValue,
         distanceRange: +distanceRangeValue, 
         texturePadding: +texturePaddingValue,
@@ -55,7 +69,8 @@ font.addEventListener("change", loadFont);
 
    
 const information = document.getElementById('info')
-information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
+//information.innerText = `This app is using Chrome ${versions.chrome()}, Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
+information.innerText = `${charset}, Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
 
 // Function to log the opt object
 function logOpt() {
