@@ -4,6 +4,8 @@ const os = require('os');
 const fs = require('fs');
 const generateBMFont = require('msdf-bmfont-xml');
 
+process.env.NODE_ENV = 'production';
+
 const isDev = process.env.NODE_ENV !== 'production';
 const isMac = process.platform === 'darwin';
 
@@ -30,7 +32,7 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
 
-    width: isDev ? 1000 : 800,
+    width: isDev ? 1000 : 500,
     x : isDev ? 2000 : null,
     y: isDev ? 100 : null,
     height: 600,

@@ -8,18 +8,21 @@
     <script defer src="render.js"></script>
   </head>
   <body>
+    <div class="topstuff">
     <h1>👶 MSDF font converter 🛠️</h1>
-    <p>(for Tooll3)</p>
+    <p>(for your real-time 3D stuff)</p>
 
-    <div>
+    <div >
       <label>
-        <img src="./images/logo.svg" width="32" />
-        <span>Select an font to convert</span>
+        <!-- <img src="./images/logo.svg" width="32" /> -->
+        <span class="genButton">Select an font</span>
         <input id="font" type="file" class="hidden" />
+        <p><strong>File: </strong><span id="filename"></p>
       </label>
     </div>
+  </div>
     <form id="myForm" class="hidden">
-      <div class="genButton" id="getFont">Select a font</div>
+     
 
       <label>FontSize:</label>
       <input type="number" id="FontSize" step="1" value="42" required>
@@ -31,12 +34,17 @@
       <input type="number" id="TexturePadding" step="1" value="4" required>
 
 
-      <button class="genButton" type="submit">Generate</button>    
+      <button class="genButton" type="submit">Convert</button>    
 
     </form>
-    <p id="info"></p>
-    <p><strong>File: </strong><span id="filename"></span></p>
-    <p><strong>Output: </strong><span id="output-path"></span></p>
+    
+    </div>
+    <div class="dev">
+      <p id="info"></p>
+    
+      <p><strong>Output: </strong><span id="output-path"></span></p></div>
+    <div class="ribbon right rainbow">
+      <a href="#">Alpha</a>
     </div>
   </body>
 </html>
