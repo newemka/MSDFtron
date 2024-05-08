@@ -1,7 +1,7 @@
 {
   "name": "msdftron",
   "productName": "msdftron",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A cute UI for msdf-bmfont-xml",
   "main": "src/index.js",
   "scripts": {

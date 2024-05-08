@@ -1,30 +1,18 @@
-const { app, BrowserWindow, ipcMain, Menu } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu, shell} = require('electron');
 const path = require('node:path');
 const os = require('os');
 const fs = require('fs');
 const generateBMFont = require('msdf-bmfont-xml');
 
-process.env.NODE_ENV = 'production';
+//process.env.NODE_ENV = 'production';
 
 const isDev = process.env.NODE_ENV !== 'production';
 const isMac = process.platform === 'darwin';
 
 
-
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
-}
-
-function handleSetTitle (event, title) {
-  const webContents = event.sender
-  const win = BrowserWindow.fromWebContents(webContents)
-  win.setTitle(title)
-}
-
-function handleSubmit (event, submit) {
-  const webContents = event.sender
-  
 }
 
 
@@ -36,6 +24,7 @@ const createWindow = () => {
     x : isDev ? 2000 : null,
     y: isDev ? 100 : null,
     height: 600,
+    resizable: false ,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,
@@ -47,6 +36,8 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
+  
+
   // Open the DevTools.
   if(isDev){
     mainWindow.webContents.openDevTools();
@@ -55,13 +46,36 @@ const createWindow = () => {
 
  };
 
+ // Create help/about window 
+
+function createAboutWindow() {
+  const aboutWindow = new BrowserWindow({
+    title : 'About MSDF converter',
+    width: 320,
+    height: 320, 
+    resizable: false
+  });
+
+  aboutWindow.loadFile(path.join(__dirname, 'about.html'));
+
+   // Handle link clicks
+  aboutWindow.webContents.on('will-navigate', (event, url) => {
+    // Open the URL in the default browser
+    shell.openExternal(url)
+    event.preventDefault() // Prevent the link from being opened in the Electron window
+  })
+
+  if(isDev){
+    aboutWindow.webContents.openDevTools();
+  }
+};
+
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  ipcMain.on('submit', handleSubmit), //ipc
-  ipcMain.on('set-title', handleSetTitle) //ipc
-  ipcMain.handle('ping', () => 'pong')
+
   createWindow();
 
   //implement menu
@@ -77,14 +91,8 @@ app.whenReady().then(() => {
   });
 });
 
-const menu = [
-  ...(isMac ? [{
-    label: app.name,
-  }] : []),
-  {
-   role: 'fileMenu',
-  }
-];
+
+
 
 //respond to ipcRenderer convert
 
@@ -135,4 +143,29 @@ app.on('window-all-closed', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
+
+
+
+// Menu
+const menu = [
+  ...(isMac ? [{
+    label: app.name,
+    submenu: [
+      {
+       label: 'About',
+       click: createAboutWindow
+      }    
+    ]
+  }] : []),
+  {
+   role: 'fileMenu',
+  },
+  ...(!isMac ? [{
+    label: 'Help',
+    submenu: [{
+      label: 'About',
+      click: createAboutWindow
+    }]
+  }] : [])
+];
 

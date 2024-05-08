@@ -120,5 +120,22 @@ p{
 }
 
 
+/*About*/
+.container{
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+}
+.about{
+  background-color: #222;
+  text-align: center;
+  margin:10px;
+  width: 100%;
+  height: 100%;
 
+}
+
+.about a{
+  color:#ff3a9e;
+}
 
