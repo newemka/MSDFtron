@@ -4,19 +4,19 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 module.exports = {
   packagerConfig: {
     asar: true,
-    icon: '/images/icons/win/icon.icons'
+    icon: './src/assets/msdftron'
   },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
       config: {authors: 'Newemka',
-        description: 'tool to convert fonts'
+        description: 'tool to convert fonts to msdf texture atlas map'
       },
     },
     {
       name: '@electron-forge/maker-zip',
-      
+      platforms: ['win32'],
     },
     {
       name: '@electron-forge/maker-deb',
@@ -38,7 +38,7 @@ module.exports = {
       version: FuseVersion.V1,
       [FuseV1Options.RunAsNode]: true,
       [FuseV1Options.EnableCookieEncryption]: false,
-      [FuseV1Options.EnableNodeOptionsEnvironmentVariable]: true,
+      [FuseV1Options.EnableNodeOptionsEnvironmentVariable]: false,
       [FuseV1Options.EnableNodeCliInspectArguments]: true,
       [FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,
       [FuseV1Options.OnlyLoadAppFromAsar]: false,

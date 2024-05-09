@@ -1,14 +1,8 @@
-const { app, BrowserWindow, ipcMain, Menu, shell, nativeImage} = require('electron');
+const { app, BrowserWindow, ipcMain, Menu, shell} = require('electron');
 const path = require('node:path');
 const os = require('os');
 const fs = require('fs');
 const generateBMFont = require('msdf-bmfont-xml');
-
-
-// icons 
-
-const appIcon = nativeImage.createFromPath('src/images/icons/Icon.png')
-
 
 
 //process.env.NODE_ENV = 'production';
