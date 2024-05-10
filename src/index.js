@@ -5,7 +5,8 @@ const fs = require('fs');
 const generateBMFont = require('msdf-bmfont-xml');
 
 
-//process.env.NODE_ENV = 'production';
+
+process.env.NODE_ENV = 'production';
 
 const isDev = process.env.NODE_ENV !== 'production';
 const isMac = process.platform === 'darwin';
@@ -20,7 +21,6 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    icon: appIcon,
     width: isDev ? 1000 : 500,
     x : isDev ? 2000 : null,
     y: isDev ? 100 : null,
@@ -34,17 +34,18 @@ const createWindow = () => {
   });
   //contextIsolation: true, // This enables context isolation
   //sandbox: true, // Enable the sandbox
-  // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
-  
 
   // Open the DevTools.
   if(isDev){
     mainWindow.webContents.openDevTools();
   }
-  
 
+  // and load the index.html of the app.
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+
+  
+  
  };
 
  // Create help/about window 
@@ -104,7 +105,7 @@ ipcMain.on('font:convert', (e, options) => {
 });
 
 //convert font {fontPath, charset_path, fieldType, fontSize, textureSize, distanceRange, texturePadding}
-async function convertFont({charset, fontPath, fontSize, distanceRange, texturePadding, textureSize}) {
+function convertFont({charset, fontPath, fontSize, distanceRange, texturePadding, textureSize}) {
   try {
      generateBMFont(
       
