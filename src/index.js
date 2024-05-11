@@ -6,7 +6,7 @@ const generateBMFont = require('msdf-bmfont-xml');
 
 
 
-process.env.NODE_ENV = 'production';
+//process.env.NODE_ENV = 'production';
 
 const isDev = process.env.NODE_ENV !== 'production';
 const isMac = process.platform === 'darwin';
@@ -36,14 +36,15 @@ const createWindow = () => {
   //sandbox: true, // Enable the sandbox
 
 
+ 
+
+  // and load the index.html of the app.
+  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  
   // Open the DevTools.
   if(isDev){
     mainWindow.webContents.openDevTools();
   }
-
-  // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
-
   
   
  };
@@ -55,7 +56,9 @@ function createAboutWindow() {
     title : 'About MSDF converter',
     width: 320,
     height: 320, 
-    resizable: false
+    resizable: false,
+    
+   
   });
 
   aboutWindow.loadFile(path.join(__dirname, 'about.html'));

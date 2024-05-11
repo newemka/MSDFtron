@@ -8,6 +8,7 @@ const fontSize = document.querySelector('#FontSize');
 const distanceRange = document.querySelector('#DistanceRange');
 const texturePadding = document.querySelector('#TexturePadding');
 const textureSize = document.querySelector('#TextureSize');
+const charedit = document.querySelector('#charedit');
 
 let charset; // Declare charset variable outside the scope of the promise chain
 
@@ -22,36 +23,38 @@ charsetter.char().then(content => {
 
 function loadFont(e) {
     const file = e.target.files[0];
-
-   /*  if (!isFileFont(file)) {
-        console.log('Please select a font');
-        return;
-    } */
+    const chars = charset;
+    /*  if (!isFileFont(file)) {
+         console.log('Please select a font');
+         return;
+     } */
 
     console.log(file + 'Success');
-    form.style.display = 'block';
-    filename.innerHTML = font.files[0].path ; 
-    outputPath.innerText = path.join(os.homedir(), 'MsdfFonts')
+    form.style.visibility = 'visible';
+    filename.innerHTML = font.files[0].path;
+    outputPath.innerHTML = os.homedir();
+    //outputPath.innerHTML = path.join(os.homedir(), 'MsdfFonts')
+    charedit.innerText = charsetter.char();
 
 }
 
 // send Font data to main
 function sendFont(e) {
-    
+
     e.preventDefault();
     const charsetpathvalue = charset;
     const fontSizeValue = fontSize.value;
     const fontPath = font.files[0].path;
     const distanceRangeValue = distanceRange.value;
     const texturePaddingValue = texturePadding.value;
-    const textureSizeValue = [+textureSize.value,+textureSize.value];
+    const textureSizeValue = [+textureSize.value, +textureSize.value];
     //Send to main using ipcRenderer
     ipcRenderer.send('font:convert', {
-        
+
         fontPath,
         charset: charsetpathvalue,
         fontSize: fontSizeValue,
-        distanceRange: +distanceRangeValue, 
+        distanceRange: +distanceRangeValue,
         texturePadding: +texturePaddingValue,
         textureSize: textureSizeValue,
 
@@ -60,17 +63,17 @@ function sendFont(e) {
 };
 
 // Make sure it's a font file
-function isFileFont(file){
+function isFileFont(file) {
     const acceptedFontTypes = ['font/ttf'];
     return file && acceptedFontTypes.includes(file['type']);
 }
 
 font.addEventListener("change", loadFont);
 
-   
+
 const information = document.getElementById('info')
 //information.innerText = `This app is using Chrome ${versions.chrome()}, Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
-information.innerText = `${charset}, Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
+information.innerText = `${charsetter.char()}, Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
 
 // Function to log the opt object
 function logOpt() {
@@ -78,5 +81,5 @@ function logOpt() {
 }
 
 // Form submit listener
-form.addEventListener('submit', sendFont); 
+form.addEventListener('submit', sendFont);
 
