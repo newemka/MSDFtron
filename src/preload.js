@@ -1,7 +1,7 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
 // preload.js
-const {ipcRenderer, contextBridge} = require('electron');
+const { ipcRenderer, contextBridge } = require('electron');
 const path = require('node:path');
 const os = require('node:os');
 const fs = require('node:fs/promises');
@@ -20,9 +20,9 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
 });
 
 contextBridge.exposeInMainWorld('versions', {
-  node: () => process.versions.node,
-  chrome: () => process.versions.chrome,
-  electron: () => process.versions.electron,
+    node: () => process.versions.node,
+    chrome: () => process.versions.chrome,
+    electron: () => process.versions.electron,
 });
 
 contextBridge.exposeInMainWorld('charsetter', {
@@ -37,3 +37,4 @@ contextBridge.exposeInMainWorld('charsetter', {
         }
     }
 });
+

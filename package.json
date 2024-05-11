@@ -3,7 +3,7 @@
   "productName": "msdftron",
   "version": "0.0.1",
   "description": "A cute UI for msdf-bmfont-xml",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",

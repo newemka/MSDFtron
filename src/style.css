@@ -33,7 +33,7 @@ textarea {
   border: 2px solid #000000;
   border-top: 1px solid rgb(48, 48, 48);
   border-bottom: 1px solid rgb(48, 48, 48);
-
+  appearance: none;
   color: white;
   border-radius: 0;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;

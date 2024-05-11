@@ -9,6 +9,8 @@ const distanceRange = document.querySelector('#DistanceRange');
 const texturePadding = document.querySelector('#TexturePadding');
 const textureSize = document.querySelector('#TextureSize');
 const charedit = document.querySelector('#charedit');
+// Assume you have a reference to the HTML element where you want to display the message
+const messageElement = document.getElementById('message');
 
 let charset; // Declare charset variable outside the scope of the promise chain
 
@@ -82,4 +84,7 @@ function logOpt() {
 
 // Form submit listener
 form.addEventListener('submit', sendFont);
+
+
+
 
