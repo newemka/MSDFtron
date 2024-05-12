@@ -41,7 +41,7 @@ function loadFont(e) {
     //outputPath.innerHTML = path.join(os.homedir(), 'MsdfFonts')
     charedit.innerText = contented;
     elemI.className = feedbackStyle;
-    elemI.innerHTML = 'font selected';
+    elemI.innerHTML = 'font selected ✓';
 }
 
 // send Font data to main

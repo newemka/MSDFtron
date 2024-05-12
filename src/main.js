@@ -18,7 +18,7 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: isDev ? 1000 : 500,
+    width: isDev ? 1200 : 600,
     x: isDev ? 2000 : null,
     y: isDev ? 100 : null,
     height: 600,
@@ -104,7 +104,7 @@ function createAboutWindow() {
     resizable: false,
 
   });
-
+  aboutWindow.removeMenu();
   aboutWindow.loadFile(path.join(__dirname, 'about.html'));
 
   // Handle link clicks
@@ -114,9 +114,9 @@ function createAboutWindow() {
     event.preventDefault() // Prevent the link from being opened in the Electron window
   })
 
-  if (isDev) {
+  /* if (isDev) {
     aboutWindow.webContents.openDevTools();
-  }
+  } */
 };
 
 
@@ -155,7 +155,7 @@ app.on('window-all-closed', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
-// Menu
+// Menu template
 const menu = [
   ...(isMac ? [{
     label: app.name,
