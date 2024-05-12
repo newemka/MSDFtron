@@ -37,6 +37,7 @@ body {
 #FeedBack {
   max-width: 250px;
   text-align: center;
+  margin: 5px auto;
 }
 
 .selected {
@@ -190,7 +191,7 @@ h1 {
 
 /* Button */
 .genButton {
-  background-color: #ff3a9e;
+  background-color: black;
   line-height: 2em;
   font-size: larger;
   cursor: pointer;
@@ -199,6 +200,7 @@ h1 {
   color: white;
   margin: 10px 0 10px 0;
   padding: 5px;
+  border: solid 1px white;
 
   -webkit-user-select: none;
   /* Safari */
@@ -206,6 +208,7 @@ h1 {
   /* IE 10 and IE 11 */
   user-select: none;
   /* Standard syntax */
+
 }
 
 button {
@@ -214,7 +217,7 @@ button {
 
 
 .genButton:hover {
-  background-color: black;
+  background-color: #ff3a9e;
   /*transform: rotate(-3deg);*/
 
 }
