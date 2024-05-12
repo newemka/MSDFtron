@@ -6,6 +6,10 @@ const path = require('node:path');
 const os = require('node:os');
 const fs = require('node:fs/promises');
 
+const WINDOW_API = {
+    getMessage: () => ipcRenderer.invoke("")
+}
+
 contextBridge.exposeInMainWorld('os', {
     homedir: () => os.homedir(),
 });
@@ -38,3 +42,10 @@ contextBridge.exposeInMainWorld('charsetter', {
     }
 });
 
+
+// for feedback 
+const indexBridge = {
+    somethinghappened: (callback) => ipcRenderer.on("somethinghappened", (callback))
+}
+
+contextBridge.exposeInMainWorld('indexBridge', indexBridge);

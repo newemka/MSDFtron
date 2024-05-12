@@ -40,6 +40,54 @@ const createWindow = () => {
     mainWindow.webContents.openDevTools();
   }
 
+  //respond to ipcRenderer convert
+  //const feedback = 'string';
+  //const feedbackStyle = 'waitforit'
+  ipcMain.on('font:convert', (e, options, feedback, feedbackStyle) => {
+    //options.dest = path.join(os.homedir(), 'fontconverter');
+    console.log(options);
+    convertFont(options);
+    feedback = 'wait for it';
+    feedbackStyle = 'waitforit';
+    mainWindow.send("somethinghappened", feedback, feedbackStyle);
+  });
+
+
+  //convert font {fontPath, charset_path, fieldType, fontSize, textureSize, distanceRange, texturePadding}
+  function convertFont({ charset, fontPath, fontSize, distanceRange, texturePadding, textureSize }, feedback, feedbackStyle) {
+    try {
+      generateBMFont(
+
+        fontPath,
+        { charset, fontSize, distanceRange, texturePadding, textureSize }, // Pass fontSize within an object
+
+        (error, textures, font) => {
+          if (error) {
+            console.error('Error generating bitmap font:', error);
+            return;
+          }
+
+          // Write the texture spritesheet to disk
+          textures.forEach((texture) => {
+            const filename = texture.filename + '.png';
+            fs.writeFileSync(filename, texture.texture);
+          });
+
+          // Write the BMFont data to disk
+          fs.writeFileSync(font.filename, font.data);
+
+          console.log('Bitmap font generated successfully!');
+          feedback = 'Atlas texture and fnt files generated!'
+          feedbackStyle = 'success'
+          mainWindow.send("somethinghappened", feedback, feedbackStyle);
+
+        });
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
 
 };
@@ -93,47 +141,7 @@ app.whenReady().then(() => {
 });
 
 
-//respond to ipcRenderer convert
 
-ipcMain.on('font:convert', (e, options) => {
-  //options.dest = path.join(os.homedir(), 'fontconverter');
-  console.log(options);
-  convertFont(options);
-});
-
-//convert font {fontPath, charset_path, fieldType, fontSize, textureSize, distanceRange, texturePadding}
-function convertFont({ charset, fontPath, fontSize, distanceRange, texturePadding, textureSize }) {
-  try {
-    generateBMFont(
-
-      fontPath,
-      { charset, fontSize, distanceRange, texturePadding, textureSize }, // Pass fontSize within an object
-
-      (error, textures, font) => {
-        if (error) {
-          console.error('Error generating bitmap font:', error);
-          return;
-        }
-
-        // Write the texture spritesheet to disk
-        textures.forEach((texture) => {
-          const filename = texture.filename + '.png';
-          fs.writeFileSync(filename, texture.texture);
-        });
-
-        // Write the BMFont data to disk
-        fs.writeFileSync(font.filename, font.data);
-
-        console.log('Bitmap font generated successfully!');
-
-
-
-
-      });
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

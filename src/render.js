@@ -11,12 +11,15 @@ const textureSize = document.querySelector('#TextureSize');
 const charedit = document.querySelector('#charedit');
 // Assume you have a reference to the HTML element where you want to display the message
 const messageElement = document.getElementById('message');
+const elemI = document.querySelector("#FeedBack");
+const feedbackStyle = 'selected';
 
 let charset; // Declare charset variable outside the scope of the promise chain
-
+let contented;
 charsetter.char().then(content => {
     console.log(content);
     charset = content; // Assign content to charset inside the promise chain
+    return contented;
 }).catch(error => {
     console.error('Error fetching file content:', error);
     charset = ''; // Assign an empty string to charset in case of error
@@ -25,19 +28,20 @@ charsetter.char().then(content => {
 
 function loadFont(e) {
     const file = e.target.files[0];
-    const chars = charset;
+
     /*  if (!isFileFont(file)) {
          console.log('Please select a font');
          return;
      } */
 
-    console.log(file + 'Success');
+    console.log(file.path + ' loaded');
     form.style.visibility = 'visible';
     filename.innerHTML = font.files[0].path;
-    outputPath.innerHTML = os.homedir();
+    //outputPath.innerHTML = os.homedir();
     //outputPath.innerHTML = path.join(os.homedir(), 'MsdfFonts')
-    charedit.innerText = charsetter.char();
-
+    charedit.innerText = contented;
+    elemI.className = feedbackStyle;
+    elemI.innerHTML = 'font selected';
 }
 
 // send Font data to main
@@ -85,6 +89,8 @@ function logOpt() {
 // Form submit listener
 form.addEventListener('submit', sendFont);
 
+window.indexBridge.somethinghappened((event, feedback, feedbackStyle) => {
+    elemI.className = feedbackStyle;
+    elemI.innerHTML = feedback;
 
-
-
+})
