@@ -27,9 +27,10 @@ p {
   background-color: rgb(46, 32, 0);
   margin: 20px auto;
   padding: 5px;
-  border-radius: 10px;
-  width: 80%;
+  border-radius: 8px;
+  width: 70%;
   text-align: left;
+  color: #ffc642;
 }
 
 #intro:first-letter {
@@ -177,6 +178,7 @@ textarea {
   }
 }
 
+
 .hidden {
   visibility: hidden;
 }
@@ -187,6 +189,10 @@ textarea {
   background-color: rgb(48, 48, 48);
   margin: 3px 0;
   text-align: right;
+}
+
+.tooltip:hover {
+  background-color: rgb(63, 63, 63);
 }
 
 .tooltip .tooltiptext {
@@ -251,7 +257,7 @@ h1 {
   text-align: center;
   color: white;
   margin: 10px 0 10px 0;
-  padding: 5px;
+  padding: 5px 10px;
   border: solid 1px white;
 
   -webkit-user-select: none;
