@@ -3,14 +3,15 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 
 module.exports = {
   packagerConfig: {
-    asar: true,
+    asar: false,
     icon: './src/assets/msdftron'
   },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {authors: 'Newemka',
+      config: {
+        authors: 'Newemka',
         description: 'tool to convert fonts to msdf texture atlas map'
       },
     },
@@ -27,5 +28,5 @@ module.exports = {
       config: {},
     },
   ],
-  
+
 };

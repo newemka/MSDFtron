@@ -78,7 +78,7 @@ const createWindow = () => {
           fs.writeFileSync(font.filename, font.data);
 
           console.log('Bitmap font generated successfully!');
-          feedback = 'Atlas texture and fnt files generated successfully!'
+          feedback = 'Atlas texture and fnt files generated successfully!<br>Go check the .png file.'
           feedbackStyle = 'success'
           mainWindow.send("somethinghappened", feedback, feedbackStyle);
 
