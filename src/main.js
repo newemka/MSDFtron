@@ -47,7 +47,7 @@ const createWindow = () => {
     //options.dest = path.join(os.homedir(), 'fontconverter');
     console.log(options);
     convertFont(options);
-    feedback = 'Wait for it';
+    feedback = 'Wait for it ⏳';
     feedbackStyle = 'waitforit';
     mainWindow.send("somethinghappened", feedback, feedbackStyle);
   });

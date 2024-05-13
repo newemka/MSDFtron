@@ -22,6 +22,27 @@ p {
   margin: 5px;
 }
 
+#intro {
+  border: 1px solid #ffc642;
+  background-color: rgb(46, 32, 0);
+  margin: 20px auto;
+  padding: 5px;
+  border-radius: 10px;
+  width: 80%;
+  text-align: left;
+}
+
+#intro:first-letter {
+  font-size: 36px;
+  /* Double the font size */
+  line-height: 1;
+  /* Set line height to 1 to fit two lines */
+  float: left;
+  /* Make sure the first character doesn't affect the layout */
+  margin-right: 5px;
+  /* Adjust margin to keep proper spacing */
+}
+
 .charlabel {
   border: 1px 0px solid white;
 }
@@ -101,7 +122,7 @@ textarea {
 
 
 .success {
-  background-color: magenta;
+  background-color: green;
   animation: success 5s ease-in-out;
   animation-iteration-count: 1;
   opacity: 0;
@@ -180,9 +201,9 @@ textarea {
   top: 0px;
   z-index: 1;
   margin-left: 0px;
-  min-width: 250px;
+  min-width: 280px;
   text-align: left;
-  /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+
   opacity: 0;
   transition: opacity 500ms, margin-left 500ms;
 

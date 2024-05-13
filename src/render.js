@@ -1,4 +1,5 @@
 const form = document.getElementById('myForm');
+const intro = document.getElementById('intro');
 const font = document.querySelector('#font');
 const filename = document.querySelector('#filename');
 const outputPath = document.querySelector('#output-path');
@@ -33,6 +34,7 @@ function loadFont(e) {
 
     console.log(file.path + ' loaded');
     form.style.visibility = 'visible';
+    intro.style.display = 'none';
     filename.innerHTML = font.files[0].path;
     //outputPath.innerHTML = os.homedir();
     //outputPath.innerHTML = path.join(os.homedir(), 'MsdfFonts')
