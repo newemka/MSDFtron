@@ -35,9 +35,11 @@ body {
 }
 
 #FeedBack {
-  max-width: 250px;
+  width: 250px;
   text-align: center;
   margin: 5px auto;
+  padding: 2px;
+  border: 1px solid #999;
 }
 
 .selected {
