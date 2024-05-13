@@ -38,7 +38,7 @@ function loadFont(e) {
     //outputPath.innerHTML = path.join(os.homedir(), 'MsdfFonts')
 
     elemI.className = feedbackStyle;
-    elemI.innerHTML = 'font selected ✓';
+    elemI.innerHTML = 'Font selected ✓';
 }
 
 // send Font data to main
@@ -74,9 +74,9 @@ function isFileFont(file) {
 font.addEventListener("change", loadFont);
 
 
-const information = document.getElementById('info')
-//information.innerText = `This app is using Chrome ${versions.chrome()}, Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
-information.innerText = `${charsetter.char()}, Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
+const information = document.getElementById('info');
+
+information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`;
 
 // Function to log the opt object
 function logOpt() {

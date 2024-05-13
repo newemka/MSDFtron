@@ -13,22 +13,30 @@ body {
 
 }
 
-.topstuff h1 {
-  margin: 10px;
+.topstuff h1,
+p {
+  margin: 5px;
 }
 
 .select {
-  margin: 15px;
+  margin: 5px;
+}
+
+.charlabel {
+  border: 1px 0px solid white;
+}
+
+.charlabel span {
+  font-size: small;
+  color: #999;
 }
 
 .charset {
-  border: 1px solid white;
   width: 100%;
-  padding: 1px;
 }
 
 #charedit {
-  margin-bottom: 10px;
+  margin: 5px 0;
 
   border: 1px solid grey;
   display: inline;
@@ -36,6 +44,8 @@ body {
 
 textarea {
   resize: none;
+  word-break: break-all;
+
 }
 
 
@@ -48,6 +58,7 @@ textarea {
 }
 
 #FeedBack {
+  font-weight: bold;
   width: 250px;
   text-align: center;
   margin: 5px auto;
@@ -258,9 +269,9 @@ input[type=file] {
   background-color: black;
   padding: 5px;
   position: fixed;
-  bottom: -60px;
+  bottom: -50px;
   width: 100%;
-  line-height: 10px;
+  line-height: 20px;
   margin: 0;
   transition: 250ms;
 }
@@ -314,9 +325,9 @@ p {
   padding: 1px 0;
   height: 24px;
   line-height: 24px;
-  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-  color: #1a1a1a;
-  color: rgba(255, 255, 255, 0.733);
+  background: #ff3a9e;
+  color: white;
+
   text-align: center;
   text-decoration: none;
   font-family: Roboto, sans-serif;
@@ -336,6 +347,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .about {
@@ -349,6 +361,7 @@ p {
 
 .about p {
   font-size: 1.1rem;
+  line-height: 1.7rem;
 }
 
 .about a {

@@ -47,7 +47,7 @@ const createWindow = () => {
     //options.dest = path.join(os.homedir(), 'fontconverter');
     console.log(options);
     convertFont(options);
-    feedback = 'wait for it';
+    feedback = 'Wait for it';
     feedbackStyle = 'waitforit';
     mainWindow.send("somethinghappened", feedback, feedbackStyle);
   });
@@ -78,7 +78,7 @@ const createWindow = () => {
           fs.writeFileSync(font.filename, font.data);
 
           console.log('Bitmap font generated successfully!');
-          feedback = 'Atlas texture and fnt files generated!'
+          feedback = 'Atlas texture and fnt files generated successfully!'
           feedbackStyle = 'success'
           mainWindow.send("somethinghappened", feedback, feedbackStyle);
 
@@ -100,28 +100,35 @@ const createWindow = () => {
 
 
 // Create help/about window 
-
+let aboutWindow = null;
 function createAboutWindow() {
-  const aboutWindow = new BrowserWindow({
-    title: 'About MSDF converter',
-    width: 320,
-    height: 320,
-    resizable: false,
+  if (!aboutWindow) {
+    aboutWindow = new BrowserWindow({
+      title: 'About MSDF converter',
+      width: 320,
+      height: 320,
+      resizable: false,
 
-  });
-  aboutWindow.removeMenu();
-  aboutWindow.loadFile(path.join(__dirname, 'about.html'));
+    });
+    aboutWindow.removeMenu();
+    aboutWindow.loadFile(path.join(__dirname, 'about.html'));
 
-  // Handle link clicks
-  aboutWindow.webContents.on('will-navigate', (event, url) => {
-    // Open the URL in the default browser
-    shell.openExternal(url)
-    event.preventDefault() // Prevent the link from being opened in the Electron window
-  })
+    // Handle link clicks
+    aboutWindow.webContents.on('will-navigate', (event, url) => {
+      // Open the URL in the default browser
+      shell.openExternal(url)
+      event.preventDefault() // Prevent the link from being opened in the Electron window
+    });
+    aboutWindow.on('closed', () => {
+      aboutWindow = null;
+    });
+    /* if (isDev) {
+      aboutWindow.webContents.openDevTools();
+    } */
 
-  /* if (isDev) {
-    aboutWindow.webContents.openDevTools();
-  } */
+  } else {
+    aboutWindow.focus(); // Bring the existing window to the front
+  }
 };
 
 

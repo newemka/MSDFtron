@@ -13,13 +13,13 @@
 <body>
   <div class="topstuff">
 
-    <h1>👶 MSDFtron 🛠️</h1>
-    <p>font to msdf atlas map converter<br>for your real-time 3D projects</p>
+    <h1>MSDFtron</h1>
+    <p>font to msdf atlas map converter<br>for your Tooll3 projects</p>
 
     <div class="select">
       <label>
 
-        <span class="genButton">Select a font ( .ttf, .otf, .woff )</span>
+        <span class="genButton">Select a font file ( .ttf, .otf, .woff )</span>
         <input id="font" type="file" accept=".ttf, .otf, .woff" />
 
       </label>
@@ -27,8 +27,8 @@
     </div>
   </div>
   <form id="myForm" class="hidden">
-    <label>Charset: edit it or paste you own</label>
-    <textarea id="charedit" rows="2" spellcheck="false"></textarea>
+    <div class="charlabel">Charset: <span>edit it or paste your own</span></div>
+    <textarea id="charedit" rows="3" spellcheck="false"></textarea>
 
     <div><label>File: </label><span id="filename"></div>
 
@@ -72,7 +72,7 @@
   <div class="dev">
     <p id="info"></p>
 
-    <p><strong>Output: </strong><span id="output-path"></span></p>
+    <p><strong>More info: Help menu -> About</span></p>
   </div>
   <div class="ribbon right rainbow">
     <a href="#">Alpha</a>
