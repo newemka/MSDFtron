@@ -64,6 +64,7 @@ const createWindow = () => {
         (error, textures, font) => {
           if (error) {
             console.error('Error generating bitmap font:', error);
+
             return;
           }
 
@@ -85,6 +86,10 @@ const createWindow = () => {
 
     } catch (error) {
       console.log(error);
+      feedback = 'error';
+      feedbackStyle = 'error'
+      mainWindow.send("somethinghappened", feedback, feedbackStyle);
+
     }
   }
 

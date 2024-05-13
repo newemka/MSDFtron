@@ -9,7 +9,6 @@ body {
 }
 
 .topstuff {
-  padding: 5px;
   text-align: center;
 
 }
@@ -22,9 +21,23 @@ body {
   margin: 15px;
 }
 
+.charset {
+  border: 1px solid white;
+  width: 100%;
+  padding: 1px;
+}
+
 #charedit {
   margin-bottom: 10px;
+
+  border: 1px solid grey;
+  display: inline;
 }
+
+textarea {
+  resize: none;
+}
+
 
 #myForm {
   display: flex;
@@ -45,6 +58,11 @@ body {
 .selected {
   background-color: transparent;
   color: green;
+}
+
+.error {
+  background-color: yellow;
+  color: black;
 }
 
 .waitforit {
@@ -222,6 +240,18 @@ button {
   background-color: #ff3a9e;
   /*transform: rotate(-3deg);*/
 
+}
+
+
+
+input[type=file] {
+  width: 350px;
+  max-width: 100%;
+  color: #444;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #555;
+  display: none;
 }
 
 .dev {
