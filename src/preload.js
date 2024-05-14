@@ -29,12 +29,26 @@ contextBridge.exposeInMainWorld('versions', {
     electron: () => process.versions.electron,
 });
 
-contextBridge.exposeInMainWorld('charsetter', {
-    char: async () => {
+/* contextBridge.exposeInMainWorld('charsetter', {
+    char: async (selectedFile) => {
+        let dafile = `${selectedFile}`;
         try {
-            const filePath = path.join(__dirname, '/charsets/eascii.txt');
+            const filePath = path.join(__dirname, dafile);
             const fileContent = await fs.readFile(filePath, 'utf-8');
             return fileContent; // Sending the file content as a string
+        } catch (error) {
+            console.error('Error reading file:', error);
+            return ''; // Return empty string if there's an error
+        }
+    }
+}); */
+contextBridge.exposeInMainWorld('charsetter', {
+    char: async (selectedFile) => {
+        let dafile = selectedFile ? selectedFile : 'eascii.txt'; // Use 'default.txt' if selectedFile is undefined
+        try {
+            const filePath = path.join(__dirname, 'charsets', dafile);
+            const fileContent = await fs.readFile(filePath, 'utf-8');
+            return fileContent;
         } catch (error) {
             console.error('Error reading file:', error);
             return ''; // Return empty string if there's an error

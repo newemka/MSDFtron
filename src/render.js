@@ -5,6 +5,9 @@ const filename = document.querySelector('#filename');
 const outputPath = document.querySelector('#output-path');
 
 const charedit = document.querySelector('#charedit');
+const fileSelect = document.getElementById('fileSelect');
+const loadFileBtn = document.getElementById('loadFileBtn');
+
 //options
 const fontSize = document.querySelector('#FontSize');
 const distanceRange = document.querySelector('#DistanceRange');
@@ -15,6 +18,42 @@ const textureSize = document.querySelector('#TextureSize');
 const messageElement = document.getElementById('message');
 const elemI = document.querySelector("#FeedBack");
 const feedbackStyle = 'selected';
+
+
+/* //attempt to select charsets
+document.addEventListener('DOMContentLoaded', () => {
+    const charsetter = window.charsetter;
+
+    
+    const charedit = document.getElementById('charedit');
+
+    loadFileBtn.addEventListener('click', () => {
+        const selectedFile = fileSelect.value;
+        charsetter.char(selectedFile).then(content => {
+            console.log(content);
+            charedit.value = content;
+        }).catch(error => {
+            console.error('Error fetching file content:', error);
+            charedit.value = '';
+        });
+    });
+}); */
+
+fileSelect.addEventListener('change', () => {
+    const selectedFile = fileSelect.value;
+    charsetter.char(selectedFile).then(content => {
+        console.log(content);
+        charedit.value = content;
+    }).catch(error => {
+        console.error('Error fetching file content:', error);
+        charedit.value = '';
+    });
+});
+
+
+
+
+
 
 function loadFont(e) {
     const file = e.target.files[0];
