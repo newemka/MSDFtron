@@ -2,7 +2,7 @@ const form = document.getElementById('myForm');
 const intro = document.getElementById('intro');
 const font = document.querySelector('#font');
 const filename = document.querySelector('#filename');
-const outputPath = document.querySelector('#output-path');
+
 
 const charedit = document.querySelector('#charedit');
 const fileSelect = document.getElementById('fileSelect');
@@ -18,28 +18,10 @@ const textureSize = document.querySelector('#TextureSize');
 const messageElement = document.getElementById('message');
 const elemI = document.querySelector("#FeedBack");
 const feedbackStyle = 'selected';
+const noneStyle = 'noStyle';
 
 
-/* //attempt to select charsets
-document.addEventListener('DOMContentLoaded', () => {
-    const charsetter = window.charsetter;
-
-    
-    const charedit = document.getElementById('charedit');
-
-    loadFileBtn.addEventListener('click', () => {
-        const selectedFile = fileSelect.value;
-        charsetter.char(selectedFile).then(content => {
-            console.log(content);
-            charedit.value = content;
-        }).catch(error => {
-            console.error('Error fetching file content:', error);
-            charedit.value = '';
-        });
-    });
-}); */
-
-fileSelect.addEventListener('change', () => {
+function handleFileSelection() {
     const selectedFile = fileSelect.value;
     charsetter.char(selectedFile).then(content => {
         console.log(content);
@@ -48,38 +30,26 @@ fileSelect.addEventListener('change', () => {
         console.error('Error fetching file content:', error);
         charedit.value = '';
     });
-});
+};
 
-
-
-
+document.addEventListener('DOMContentLoaded', handleFileSelection);
+fileSelect.addEventListener('change', handleFileSelection);
 
 
 function loadFont(e) {
     const file = e.target.files[0];
 
-    charsetter.char().then(content => {
-        console.log(content);
-        charedit.value = content; // Assign content to charedit inside the promise chain
-    }).catch(error => {
-        console.error('Error fetching file content:', error);
-        charedit.value = ''; // Assign an empty string to charedit in case of error
-    });
-
-    /*  if (!isFileFont(file)) {
-         console.log('Please select a font');
-         return;
-     } */
-
     console.log(file.path + ' loaded');
     form.style.visibility = 'visible';
     intro.style.display = 'none';
     filename.innerHTML = font.files[0].path;
-    //outputPath.innerHTML = os.homedir();
-    //outputPath.innerHTML = path.join(os.homedir(), 'MsdfFonts')
 
     elemI.className = feedbackStyle;
     elemI.innerHTML = 'Font selected ✓';
+    // Set a timer to remove the feedback after 5 seconds
+    setTimeout(() => {
+        elemI.className = noneStyle;
+    }, 3100);
 }
 
 // send Font data to main

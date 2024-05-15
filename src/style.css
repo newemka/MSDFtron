@@ -1,3 +1,9 @@
+:root {
+  --bgcolor: rgb(48, 48, 48);
+  --bgcolorH: rgb(63, 63, 63);
+  --t3pink: #ff3a9e;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
@@ -18,7 +24,7 @@ p {
   margin: 5px;
 }
 
-.select {
+.selectfontbtn {
   margin: 5px;
 }
 
@@ -57,17 +63,44 @@ p {
   width: 100%;
 }
 
-#charedit {
-  margin: 5px 0;
+#fileMenu {
+  display: flex;
+  background-color: var(--bgcolor);
+  align-items: flex-end;
 
-  border: 1px solid grey;
+}
+
+#fileMenu p {
+  margin: 0 0 1px 5px;
+}
+
+#fileSelect {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+#fileMenu:hover {
+  background-color: var(--bgcolorH);
+}
+
+
+option {
+  background-color: var(--bgcolor);
+}
+
+#charedit {
+  margin: 0 0 5px 0;
+  background-color: var(--bgcolor);
+  border: 1px solid var(--bgcolorH);
   display: inline;
 }
 
 textarea {
   resize: none;
   word-break: break-all;
-
+  scrollbar-color: rgb(156, 156, 156) var(--bgcolor);
+  scrollbar-width: thin;
 }
 
 
@@ -85,12 +118,21 @@ textarea {
   text-align: center;
   margin: 5px auto;
   padding: 2px;
-  border: 1px solid #999;
+  border-radius: 8px;
 }
 
-.selected {
-  background-color: transparent;
-  color: green;
+.selected,
+.success {
+  background-color: hsl(159, 100%, 10%);
+  color: #00d1b2;
+  border: 1px solid #00d1b2;
+  animation: success 3s ease-in-out;
+  animation-iteration-count: 1;
+  opacity: 0;
+}
+
+.noStyle {
+  opacity: 0;
 }
 
 .error {
@@ -122,25 +164,23 @@ textarea {
 }
 
 
-.success {
-  background-color: green;
-  animation: success 5s ease-in-out;
-  animation-iteration-count: 1;
-  opacity: 0;
-}
-
 @keyframes success {
   0% {
     transform: scale(0);
     opacity: 1;
   }
 
-  10% {
+  25% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  35% {
     transform: scale(1);
     opacity: 1;
   }
 
-  90% {
+  80% {
     transform: scale(1);
     opacity: 1;
   }
@@ -162,8 +202,8 @@ textarea {
   background: none;
   background-image: none;
   border: 2px solid #000000;
-  border-top: 1px solid rgb(48, 48, 48);
-  border-bottom: 1px solid rgb(48, 48, 48);
+  border-top: 1px solid var(--bgcolor);
+  border-bottom: 1px solid var(--bgcolor);
   appearance: none;
   color: white;
   border-radius: 0;
@@ -186,13 +226,13 @@ textarea {
 .tooltip {
   position: relative;
   max-width: 41%;
-  background-color: rgb(48, 48, 48);
+  background-color: var(--bgcolor);
   margin: 3px 0;
   text-align: right;
 }
 
 .tooltip:hover {
-  background-color: rgb(63, 63, 63);
+  background-color: var(--bgcolorH);
 }
 
 .tooltip .tooltiptext {
@@ -275,7 +315,7 @@ button {
 
 
 .genButton:hover {
-  background-color: #ff3a9e;
+  background-color: var(--t3pink);
   /*transform: rotate(-3deg);*/
 
 }
@@ -315,44 +355,30 @@ p {
 /* Ribbon */
 .ribbon {
   position: absolute;
-  top: 42px;
-  width: 200px;
-  padding: 1px 0;
-
+  top: 40px;
+  width: 220px;
   color: #eee;
 
-  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .ribbon.left {
-  left: -42px;
-  -moz-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
+  left: -47px;
+
   transform: rotate(-45deg);
 }
 
 .ribbon.right {
-  right: -42px;
-  -moz-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
+  right: -47px;
+
   transform: rotate(45deg);
 }
 
-.ribbon a,
-.ribbon a:visited,
-.ribbon a:active,
-.ribbon a:hover {
+.ribbon p {
   display: block;
-  padding: 1px 0;
+
   height: 24px;
   line-height: 24px;
-  background: #ff3a9e;
+  background: var(--t3pink);
   color: white;
 
   text-align: center;
@@ -360,12 +386,7 @@ p {
   font-family: Roboto, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  cursor: default;
-  border: 1px solid rgba(255, 255, 255, 0.3);
 
-  -moz-text-shadow: 0 0 10px rgba(0, 0, 0, 0.31);
-  -webkit-text-shadow: 0 0 10px rgba(0, 0, 0, 0.31);
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.31);
 }
 
 
@@ -392,5 +413,5 @@ p {
 }
 
 .about a {
-  color: #ff3a9e;
+  color: var(--t3pink);
 }
