@@ -3,6 +3,8 @@ const intro = document.getElementById('intro');
 const font = document.querySelector('#font');
 const filename = document.querySelector('#filename');
 
+const container = document.getElementById('container');
+
 
 const charedit = document.querySelector('#charedit');
 const fileSelect = document.getElementById('fileSelect');
@@ -40,7 +42,7 @@ function loadFont(e) {
     const file = e.target.files[0];
 
     console.log(file.path + ' loaded');
-    form.style.visibility = 'visible';
+    container.style.visibility = 'visible';
     intro.style.display = 'none';
     filename.innerHTML = font.files[0].path;
 

@@ -50,6 +50,7 @@ p {
   /* Adjust margin to keep proper spacing */
 }
 
+
 .charlabel {
   border: 1px 0px solid white;
 }
@@ -67,7 +68,8 @@ p {
   display: flex;
   background-color: var(--bgcolor);
   align-items: flex-end;
-
+  width: 340px;
+  margin: 3px 0;
 }
 
 #fileMenu p {
@@ -89,26 +91,31 @@ option {
   background-color: var(--bgcolor);
 }
 
-#charedit {
-  margin: 0 0 5px 0;
-  background-color: var(--bgcolor);
-  border: 1px solid var(--bgcolorH);
-  display: inline;
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-textarea {
+#charedit {
+  margin: 3px 0;
+  background-color: var(--bgcolor);
+  border: 1px solid var(--bgcolorH);
+  color: white;
   resize: none;
   word-break: break-all;
   scrollbar-color: rgb(156, 156, 156) var(--bgcolor);
   scrollbar-width: thin;
+  width: 334px;
 }
 
 
 #myForm {
   display: flex;
   flex-direction: column;
-  justify-items: right;
-  margin: 15px;
+
+
+  width: 240px;
   /* background-color: rgb(0, 174, 255);*/
 }
 
@@ -197,8 +204,7 @@ textarea {
   color: #eee;
 }*/
 
-input,
-textarea {
+input {
   background: none;
   background-image: none;
   border: 2px solid #000000;
@@ -225,7 +231,7 @@ textarea {
 
 .tooltip {
   position: relative;
-  max-width: 41%;
+  /*max-width: 41%;*/
   background-color: var(--bgcolor);
   margin: 3px 0;
   text-align: right;
@@ -296,7 +302,7 @@ h1 {
   transition: 250ms;
   text-align: center;
   color: white;
-  margin: 10px 0 10px 0;
+  margin: 8px 0;
   padding: 5px 10px;
   border: solid 1px white;
 
