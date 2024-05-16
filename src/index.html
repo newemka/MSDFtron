@@ -29,71 +29,66 @@
 
     </div>
   </div>
-  <div><label>File: </label><span id="filename"></div>
+
   <div id="container" class="hidden">
-    <form id="myForm">
+    <div><label>Selected font: </label><span id="filename"></div>
+    <div class="parameters">
+
+      <form id="myForm">
+
+        <div class="tooltip">
+          <label>Font Size:</label><input type="number" id="FontSize" step="1" value="82" required>
+          <span class="tooltiptext">Increase if too much empty space in created image; decrease if two images were
+            created</span>
+        </div>
+
+        <div class="tooltip">
+          <label>Texture Size:</label><input type="number" id="TextureSize" step="256" value="1024" required>
+          <span class="tooltiptext">Use 2048 for fonts with fine structures or curves</span>
+        </div>
+
+        <div class="tooltip">
+          <label>Distance Range:</label><input type="number" id="DistanceRange" step="1" value="4" required>
+          <span class="tooltiptext">This will impact the softness of the font rendering and range of shadow. Too low
+            causes
+            aliasing. Too high artifacts.</span>
+        </div>
+
+        <div class="tooltip">
+          <label>Texture Padding:</label><input type="number" id="TexturePadding" step="1" value="4" required>
+          <span class="tooltiptext">10 for 2048 is recommended</span>
+        </div>
 
 
+      </form>
 
+      <div class="czone">
 
-      <div class="tooltip">
-        <label>Font Size:</label><input class="istyle" type="number" id="FontSize" step="1" value="82" required>
-        <span class="tooltiptext">Increase if too much empty space in created image; decrease if two images were
-          created</span>
+        <div id="fileMenu">
+          <label class="custom-select" for="fileSelect">Charset:</label>
+          <select id="fileSelect">
 
+            <option value="eascii.txt">EASCII</option>
+            <option value="chinese.txt">Chinese</option>
+            <option value="eascii_katakana.txt">JP katakana</option>
+            <option value="eascii_notosansJP.txt">Japanese</option>
+            <option value="eascii_korean.txt">Korean</option>
+            <option value="easciitest.txt">1234test</option>
 
-      </div>
+            <option value=" " disabled>----</option>
+            <option value="unicode_food.txt" disabled>Unicode food</option>
 
-      <div class="tooltip">
-        <label>Texture Size:</label><input class="istyle" type="number" id="TextureSize" step="256" value="1024"
-          required>
-        <span class="tooltiptext">Use 2048 for fonts with fine structures or curves</span>
+          </select>
+          <p>(edit it or paste your own)</p>
 
-
-      </div>
-
-      <div class="tooltip">
-        <label>Distance Range:</label><input type="number" id="DistanceRange" step="1" value="4" required>
-        <span class="tooltiptext">This will impact the softness of the font rendering and range of shadow. Too low
-          causes
-          aliasing. Too high artifacts.</span>
-
-
-      </div>
-
-      <div class="tooltip">
-        <label>Texture Padding:</label><input type="number" id="TexturePadding" step="1" value="4" required>
-        <span class="tooltiptext">10 for 2048 is recommended</span>
-
-
-      </div>
-
-      <button class="genButton" type="submit">Convert</button>
-      <div id="FeedBack"></div>
-    </form>
-    <div class="right">
-      <!-- <div class="charlabel">Charset: <span>you can edit it or paste your own</span></div> -->
-      <div id="fileMenu">
-        <label class="custom-select" for="fileSelect">Charset:</label>
-        <select id="fileSelect">
-
-          <option value="eascii.txt">EASCII</option>
-          <option value="chinese.txt">Chinese</option>
-          <option value="eascii_katakana.txt">JP katakana</option>
-          <option value="eascii_notosansJP.txt">Japanese</option>
-          <option value="eascii_korean.txt">Korean</option>
-          <option value="easciitest.txt">1234test</option>
-
-          <option value=" " disabled>----</option>
-          <option value="unicode_food.txt" disabled>Unicode food</option>
-
-        </select>
-        <p>(edit it or paste your own)</p>
+        </div>
+        <textarea id="charedit" rows="9" spellcheck="false"></textarea>
 
       </div>
-      <textarea id="charedit" rows="9" spellcheck="false"></textarea>
-
     </div>
+    <div><label>Output folder: </label><span id="outputfolder"></div>
+    <button class="genButton" type="submit" id="convertbtn">Convert</button>
+    <div id="FeedBack"></div>
   </div>
 
 

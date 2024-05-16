@@ -2,8 +2,11 @@ const form = document.getElementById('myForm');
 const intro = document.getElementById('intro');
 const font = document.querySelector('#font');
 const filename = document.querySelector('#filename');
+const outputfolder = document.querySelector('#outputfolder');
 
 const container = document.getElementById('container');
+
+const convertBtn = document.getElementById('convertbtn');
 
 
 const charedit = document.querySelector('#charedit');
@@ -40,12 +43,16 @@ fileSelect.addEventListener('change', handleFileSelection);
 
 function loadFont(e) {
     const file = e.target.files[0];
+    const filePath = file.path;
+    // Extract folder path from file path
+    const folderPath = font.files[0].path;
 
-    console.log(file.path + ' loaded');
+
+    console.log(filePath + ' loaded');
     container.style.visibility = 'visible';
     intro.style.display = 'none';
-    filename.innerHTML = font.files[0].path;
-
+    filename.innerHTML = file.name;
+    outputfolder.innerHTML = path.dirname(file.path); // Extract folder path from file path
     elemI.className = feedbackStyle;
     elemI.innerHTML = 'Font selected ✓';
     // Set a timer to remove the feedback after 5 seconds
@@ -97,7 +104,7 @@ function logOpt() {
 }
 
 // Form submit listener
-form.addEventListener('submit', sendFont);
+convertBtn.addEventListener('click', sendFont);
 
 window.indexBridge.somethinghappened((event, feedback, feedbackStyle) => {
     elemI.className = feedbackStyle;

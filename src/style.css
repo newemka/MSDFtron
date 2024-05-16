@@ -25,7 +25,7 @@ p {
 }
 
 .selectfontbtn {
-  margin: 5px;
+  margin: 10px 0;
 }
 
 #intro {
@@ -50,14 +50,27 @@ p {
   /* Adjust margin to keep proper spacing */
 }
 
-
-.charlabel {
-  border: 1px 0px solid white;
+#filename,
+#outputfolder {
+  color: #00d1b2;
 }
 
-.charlabel span {
-  font-size: small;
-  color: #999;
+#container {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.parameters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.czone {
+  width: 330px;
+  transition: opacity 500ms ease;
 }
 
 .charset {
@@ -68,7 +81,7 @@ p {
   display: flex;
   background-color: var(--bgcolor);
   align-items: flex-end;
-  width: 340px;
+
   margin: 3px 0;
 }
 
@@ -91,12 +104,6 @@ option {
   background-color: var(--bgcolor);
 }
 
-#container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
 #charedit {
   margin: 3px 0;
   background-color: var(--bgcolor);
@@ -106,7 +113,9 @@ option {
   word-break: break-all;
   scrollbar-color: rgb(156, 156, 156) var(--bgcolor);
   scrollbar-width: thin;
-  width: 334px;
+  width: 324px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 
@@ -198,12 +207,6 @@ option {
   }
 }
 
-/*.istyle {
-  background-color: #999;
-  box-decoration-break: unset;
-  color: #eee;
-}*/
-
 input {
   background: none;
   background-image: none;
@@ -241,7 +244,7 @@ input {
   background-color: var(--bgcolorH);
 }
 
-.tooltip .tooltiptext {
+.tooltiptext {
   visibility: hidden;
   /*width: 240px;*/
   background-color: rgb(0, 78, 109);
@@ -257,7 +260,8 @@ input {
   text-align: left;
 
   opacity: 0;
-  transition: opacity 500ms, margin-left 500ms;
+
+  transition: opacity 500ms, margin-left 500ms, box-shadow 1000ms;
 
 }
 
@@ -278,11 +282,20 @@ input {
   visibility: visible;
   opacity: 1;
   margin-left: 10px;
+  box-shadow: 5px 5px 40px 11px black;
 }
+
+
 
 .tooltip input {
   width: 60px;
 }
+
+/*#myForm:hover~.czone {
+
+  opacity: 0.3 !important;
+
+}*/
 
 h1 {
   -webkit-user-select: none;

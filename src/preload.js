@@ -16,6 +16,7 @@ contextBridge.exposeInMainWorld('os', {
 
 contextBridge.exposeInMainWorld('path', {
     join: (...args) => path.join(...args),
+    dirname: (...args) => path.dirname(...args),
 });
 
 contextBridge.exposeInMainWorld('ipcRenderer', {
