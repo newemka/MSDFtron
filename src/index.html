@@ -37,26 +37,41 @@
       <form id="myForm">
 
         <div class="tooltip">
-          <label>Font Size:</label><input type="number" id="FontSize" step="1" value="82" required>
+          <div class="setting" data-target="FontSize"><img src="images/reset_setting.svg"
+              alt="reset to default setting value" height="15" width="15" />Font
+            Size</div><input type="number" id="FontSize" step="1" value="82" required>
           <span class="tooltiptext">Increase if too much empty space in created image; decrease if two images were
             created</span>
         </div>
 
         <div class="tooltip">
-          <label>Texture Size:</label><input type="number" id="TextureSize" step="256" value="1024" required>
+          <div class="setting" data-target="TextureSize"><img src="images/reset_setting.svg"
+              alt="reset to default setting value" height="15" width="15" />Texture Size</div><input type="number"
+            id="TextureSize" step="256" value="1024" required>
           <span class="tooltiptext">Use 2048 for fonts with fine structures or curves</span>
         </div>
 
         <div class="tooltip">
-          <label>Distance Range:</label><input type="number" id="DistanceRange" step="1" value="4" required>
+          <div class="setting" data-target="DistanceRange"><img src="images/reset_setting.svg"
+              alt="reset to default setting value" height="15" width="15" />Distance Range</div><input type="number"
+            id="DistanceRange" step="1" value="4" required>
           <span class="tooltiptext">This will impact the softness of the font rendering and range of shadow. Too low
             causes
             aliasing. Too high artifacts.</span>
         </div>
 
         <div class="tooltip">
-          <label>Texture Padding:</label><input type="number" id="TexturePadding" step="1" value="4" required>
+          <div class="setting" data-target="TexturePadding"><img src="images/reset_setting.svg"
+              alt="reset to default setting value" height="15" width="15" />Texture Padding</div><input type="number"
+            id="TexturePadding" step="1" value="4" required>
           <span class="tooltiptext">10 for 2048 is recommended</span>
+        </div>
+        <div class="tooltip">
+          <label class="switch">
+            <input id="JsonXml" type="checkbox" checked>
+            <span class="slider"></span>
+            <span class="tooltiptext">Keep it checked for Tooll3, if unchecked you'll get a json file</span>
+          </label>
         </div>
 
 

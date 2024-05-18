@@ -3,6 +3,7 @@ const intro = document.getElementById('intro');
 const font = document.querySelector('#font');
 const filename = document.querySelector('#filename');
 const outputfolder = document.querySelector('#outputfolder');
+const checkbox = document.querySelector('#JsonXml');
 
 const container = document.getElementById('container');
 
@@ -18,6 +19,18 @@ const fontSize = document.querySelector('#FontSize');
 const distanceRange = document.querySelector('#DistanceRange');
 const texturePadding = document.querySelector('#TexturePadding');
 const textureSize = document.querySelector('#TextureSize');
+document.addEventListener('DOMContentLoaded', function () {
+    const settingElements = document.querySelectorAll('.setting');
+    settingElements.forEach(settingElement => {
+        settingElement.addEventListener('click', function () {
+            const targetId = this.getAttribute('data-target');
+            const inputElement = document.getElementById(targetId);
+            if (inputElement) {
+                inputElement.value = inputElement.defaultValue;
+            }
+        });
+    });
+});
 
 // Assume you have a reference to the HTML element where you want to display the message
 const messageElement = document.getElementById('message');
@@ -61,10 +74,28 @@ function loadFont(e) {
     }, 3100);
 }
 
+// Function to determine the value based on checkbox status
+function getType() {
+    // If checkbox is checked, return 'xml', otherwise return 'json'
+    return checkbox.checked ? 'xml' : 'json';
+}
+// Function to update the console log when checkbox changes
+function updateLog() {
+    const format = getType();
+    console.log('Selected format:', format);
+}
+
+// Attach event listener to checkbox
+checkbox.addEventListener('change', updateLog);
+
+// Initial console log
+updateLog();
+
 // send Font data to main
 function sendFont(e) {
 
     e.preventDefault();
+    const xmljson = getType();
     const charsetpathvalue = charedit.value;
     const fontSizeValue = fontSize.value;
     const fontPath = font.files[0].path;
@@ -80,6 +111,7 @@ function sendFont(e) {
         distanceRange: +distanceRangeValue,
         texturePadding: +texturePaddingValue,
         textureSize: textureSizeValue,
+        outputType: xmljson,
 
     });
 

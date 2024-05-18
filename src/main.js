@@ -54,12 +54,12 @@ const createWindow = () => {
 
 
   //convert font {fontPath, charset_path, fieldType, fontSize, textureSize, distanceRange, texturePadding}
-  function convertFont({ charset, fontPath, fontSize, distanceRange, texturePadding, textureSize }, feedback, feedbackStyle) {
+  function convertFont({ charset, fontPath, fontSize, distanceRange, texturePadding, textureSize, outputType }, feedback, feedbackStyle) {
     try {
       generateBMFont(
 
         fontPath,
-        { charset, fontSize, distanceRange, texturePadding, textureSize }, // Pass fontSize within an object
+        { charset, fontSize, distanceRange, texturePadding, textureSize, outputType }, // Pass fontSize within an object
 
         (error, textures, font) => {
           if (error) {
