@@ -66,12 +66,15 @@
             id="TexturePadding" step="1" value="4" required>
           <span class="tooltiptext">10 for 2048 is recommended</span>
         </div>
-        <div class="tooltip">
+
+        <div class="switcher tooltip">
+          <span>json / xml(.fnt)</span>
           <label class="switch">
             <input id="JsonXml" type="checkbox" checked>
             <span class="slider"></span>
-            <span class="tooltiptext">Keep it checked for Tooll3, if unchecked you'll get a json file</span>
+            <span class="tooltiptext">Data type, keep it checked for Tooll3, if unchecked you'll get a json file</span>
           </label>
+
         </div>
 
 
@@ -97,7 +100,7 @@
           <p>(edit it or paste your own)</p>
 
         </div>
-        <textarea id="charedit" rows="9" spellcheck="false"></textarea>
+        <textarea id="charedit" rows="5" spellcheck="false"></textarea>
 
       </div>
     </div>
@@ -106,17 +109,16 @@
     <div id="FeedBack"></div>
   </div>
 
-
-
   </div>
   <div class="dev">
     <p id="info"></p>
-
     <p><strong>More info: Help menu -> About</span></p>
   </div>
+
   <div class="ribbon right rainbow">
     <p>Alpha v0.2.1</p>
   </div>
+
 </body>
 
 </html>

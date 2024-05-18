@@ -19,15 +19,18 @@ const fontSize = document.querySelector('#FontSize');
 const distanceRange = document.querySelector('#DistanceRange');
 const texturePadding = document.querySelector('#TexturePadding');
 const textureSize = document.querySelector('#TextureSize');
+
+// 
 document.addEventListener('DOMContentLoaded', function () {
-    const settingElements = document.querySelectorAll('.setting');
+    const settingElements = document.querySelectorAll('.setting'); //The JavaScript selects all elements with the .setting class using querySelectorAll.
+    //iterates over each .setting element using forEach. // For each .setting element, it adds a click event listener.
     settingElements.forEach(settingElement => {
         settingElement.addEventListener('click', function () {
             const targetId = this.getAttribute('data-target');
             const inputElement = document.getElementById(targetId);
             if (inputElement) {
                 inputElement.value = inputElement.defaultValue;
-            }
+            }//When a .setting element is clicked, it retrieves the data-target attribute, selects the corresponding input field by its id, and resets the input field’s value to its default value.
         });
     });
 });

@@ -2,13 +2,14 @@
   --bgcolor: rgb(48, 48, 48);
   --bgcolorH: rgb(63, 63, 63);
   --t3pink: #ff3a9e;
+  --bckg: #1a1a1a;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
 
-  background-color: #1a1a1a;
+  background-color: var(--bckg);
   color: gainsboro;
   overflow: hidden;
   margin: 0;
@@ -83,6 +84,11 @@ p {
   align-items: flex-end;
 
   margin: 3px 0;
+  height: 22px;
+}
+
+.custom-select {
+  margin-left: 2px;
 }
 
 #fileMenu p {
@@ -116,6 +122,8 @@ option {
   width: 324px;
   opacity: 1;
   transition: opacity 0.3s ease;
+  font-family: sans-serif;
+  line-height: 20px;
 }
 
 
@@ -212,16 +220,16 @@ option {
 input {
   background: none;
   background-image: none;
-  border: 2px solid #000000;
-  border-top: 1px solid var(--bgcolor);
-  border-bottom: 1px solid var(--bgcolor);
-  appearance: none;
+  border: 1px solid var(--bgcolor);
+  /*border-top: 1px solid var(--bgcolor);
+  border-bottom: 1px solid var(--bgcolor);*/
+
   color: white;
   border-radius: 0;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
   padding-top: 4px;
   padding-left: 8px;
-  margin-left: 5px;
+
 
   &:focus {
     outline: 0;
@@ -239,6 +247,18 @@ input {
   justify-content: space-between;
   width: 156px;
   align-items: baseline;
+  cursor: pointer;
+  border-right: 2px solid var(--bckg);
+  padding-right: 2px;
+  height: 22px;
+}
+
+.setting img {
+  opacity: 0;
+}
+
+.setting:hover img {
+  opacity: 1;
 }
 
 .tooltip {
@@ -423,8 +443,8 @@ p {
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 36px;
+  width: 72px;
+  height: 22px;
 }
 
 /* Hide default HTML checkbox */
@@ -446,18 +466,20 @@ p {
   -webkit-transition: .4s;
   transition: .4s;
   border: 1px solid var(--bgcolor);
+
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 12px;
+  width: 24px;
   left: 4px;
   bottom: 4px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
+  border-radius: 6px;
 }
 
 input:checked+.slider {
@@ -471,7 +493,7 @@ input:focus+.slider {
 input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  transform: translateX(40px);
 }
 
 
