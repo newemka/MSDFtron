@@ -48,7 +48,8 @@
           <div class="setting" data-target="TextureSize"><img src="images/reset_setting.svg"
               alt="reset to default setting value" height="15" width="15" />Texture Size</div><input type="number"
             id="TextureSize" step="256" value="1024" required>
-          <span class="tooltiptext">Use 2048 for fonts with fine structures or curves</span>
+          <span class="tooltiptext">Higher value doesn't mean you'll get better result. Use 2048 for fonts with fine
+            structures or curves</span>
         </div>
 
         <div class="tooltip">
@@ -67,8 +68,8 @@
           <span class="tooltiptext">10 for 2048 is recommended</span>
         </div>
 
-        <div class="switcher tooltip">
-          <span>json / xml(.fnt)</span>
+        <div class="switcher tooltip"> Type:
+          <span id="json">json</span> / <span id="xml">xml(.fnt)</span>
           <label class="switch">
             <input id="JsonXml" type="checkbox" checked>
             <span class="slider"></span>

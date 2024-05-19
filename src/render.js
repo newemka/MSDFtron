@@ -35,8 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Assume you have a reference to the HTML element where you want to display the message
-const messageElement = document.getElementById('message');
+// Feedback messages
 const elemI = document.querySelector("#FeedBack");
 const feedbackStyle = 'selected';
 const noneStyle = 'noStyle';
@@ -88,11 +87,32 @@ function updateLog() {
     console.log('Selected format:', format);
 }
 
+const xmlSpan = document.getElementById('xml');
+const jsonSpan = document.getElementById('json');
+
+function updateColor() {
+    if (checkbox.checked) {
+        xmlSpan.classList.add('active');
+        jsonSpan.classList.remove('active');
+        jsonSpan.classList.add('inactive');
+        xmlSpan.classList.remove('inactive');
+    } else {
+        xmlSpan.classList.remove('active');
+        jsonSpan.classList.add('active');
+        jsonSpan.classList.remove('inactive');
+        xmlSpan.classList.add('inactive');
+    }
+}
+
 // Attach event listener to checkbox
-checkbox.addEventListener('change', updateLog);
+checkbox.addEventListener('change', updateColor);
 
 // Initial console log
 updateLog();
+
+updateColor();
+
+
 
 // send Font data to main
 function sendFont(e) {
