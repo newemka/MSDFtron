@@ -41,15 +41,20 @@
               alt="reset to default setting value" height="15" width="15" />Font
             Size</div><input type="number" id="FontSize" step="1" value="82" required>
           <span class="tooltiptext">Increase if too much empty space in created image; decrease if two images were
-            created</span>
+            created <span class="highlight">(Tooll3 supports only one atlas map per font)</span>. You might need to
+            increase this
+            value for
+            fonts
+            with lots of small details (i.e. a grunge font)</span>
         </div>
 
         <div class="tooltip">
           <div class="setting" data-target="TextureSize"><img src="images/reset_setting.svg"
               alt="reset to default setting value" height="15" width="15" />Texture Size</div><input type="number"
             id="TextureSize" step="256" value="1024" required>
-          <span class="tooltiptext">Higher value doesn't mean you'll get better result. Use 2048 for fonts with fine
-            structures or curves</span>
+          <span class="tooltiptext">A higher value doesn't mean you'll get better result. Use high resolution for fonts
+            with lots of small details (i.e. a grunge font) or if you need to pack a lot of glyphs (Chinese, Japanese,
+            Korean...) </span>
         </div>
 
         <div class="tooltip">
@@ -58,7 +63,7 @@
             id="DistanceRange" step="1" value="4" required>
           <span class="tooltiptext">This will impact the softness of the font rendering and range of shadow. Too low
             causes
-            aliasing. Too high artifacts.</span>
+            aliasing. Too high artifacts. </span>
         </div>
 
         <div class="tooltip">
@@ -73,7 +78,7 @@
           <label class="switch">
             <input id="JsonXml" type="checkbox" checked>
             <span class="slider"></span>
-            <span class="tooltiptext">Data type, keep it checked for Tooll3, if unchecked you'll get a json file</span>
+            <span class="tooltiptext">Data type, keep it checked for Tooll3. </span>
           </label>
 
         </div>
@@ -117,7 +122,7 @@
   </div>
 
   <div class="ribbon right rainbow">
-    <p>Alpha v0.2.1</p>
+    <p>v1.0.0 Beta</p>
   </div>
 
 </body>
