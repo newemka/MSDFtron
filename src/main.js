@@ -4,7 +4,7 @@ const os = require('os');
 const fs = require('fs');
 const generateBMFont = require('msdf-bmfont-xml');
 
-//process.env.NODE_ENV = 'production';  
+process.env.NODE_ENV = 'production';
 
 const isDev = process.env.NODE_ENV !== 'production';
 const isMac = process.platform === 'darwin';
