@@ -6,9 +6,9 @@
 
 ### Goal
 
-The goal of this project is to democratize and hopefully simplify the process of converting fonts for [Tooll3](https://tooll.io/) users and artists who are not always up to use command line for such task.
+The goal of this project is to democratize and hopefully simplify the process of converting fonts for [Tooll3 / TiXL](https://tixl.app/) users and artists who are not always up to use command line for such task.
 
-In Tooll3, the [Text], [TextOutline2] and [TextSprites] operators are using *.fnt* files combined with a bitmap *.png*.
+In Tooll3 / TiXL, the [Text], [TextOutline2] and [TextSprites] operators are using *.fnt* files combined with a bitmap *.png*.
 
 MSDFtron will help you generate this couple of files for .ttf, .otf and .woff files so you can easily use any font.
 
