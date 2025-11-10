@@ -34,7 +34,10 @@ Once the zip file unpacked, run MSDFtron.exe
 - Open the folder containing your font, check the png file (We want to maximize the use of the space)
 - If there is too much empty space, increase the Font Size 
 - If more than one png file are generated, you can increase the Texture Size
-- Click *Convert* again 
+- Click *Convert* again
+  
+### Video on Youtube: 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/iEJAiQ4uymw/0.jpg)](https://www.youtube.com/watch?v=iEJAiQ4uymw)
 
 ### References
 [msdfgen](https://github.com/Chlumsky/msdfgen) by Chlumsky who developed the MSDF technique.
