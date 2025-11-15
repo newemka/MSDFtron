@@ -1,0 +1,47 @@
+name: build
+on: [push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            name: msdftron-linux
+            path: /home/runner/work/MSDFtron/MSDFtron/msdftron-linux-x64
+          - os: windows-latest
+            name: msdftron-windows
+            path: D:\a\MSDFtron\MSDFtron\msdftron-win32-x64
+          - os: macos-latest
+            name: msdftron-macos
+            path: /Users/runner/work/MSDFtron/MSDFtron/msdftron-darwin-arm64
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # if needed
+      - name: Build electron app
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: electron-packager ./ # will run `yarn electron-packager` command
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          # Name of the artifact to upload.
+          # Optional. Default is 'artifact'
+          name: ${{ matrix.name }}
+
+          # A file, directory or wildcard pattern that describes what to upload
+          # Required.
+          path: ${{ matrix.path }}
