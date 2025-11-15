@@ -45,16 +45,3 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           # Required.
           path: ${{ matrix.path }}
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Release
-        uses: EffectiveRange/version-release-github-action@v2
-        with:
-          release-version: '1.0.0'
-          download-pattern: "msdftron-*"
-          create-latest: 'true'
-          merge-multiple: 'false'
