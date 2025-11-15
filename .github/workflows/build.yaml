@@ -95,3 +95,14 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           # Required.
           path: /Users/runner/work/MSDFtron/MSDFtron/msdftron-darwin-arm64
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Release
+        uses: EffectiveRange/version-release-github-action@v1
+        with:
+          release-version: '1.0.0'
+          download-name: 'MSDFtron'
+          create-latest: 'true'
