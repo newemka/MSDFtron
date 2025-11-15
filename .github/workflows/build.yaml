@@ -57,3 +57,4 @@ jobs:
           release-version: '1.0.0'
           download-pattern: "msdftron-*"
           create-latest: 'true'
+          merge-multiple: 'false'
