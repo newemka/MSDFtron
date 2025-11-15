@@ -55,5 +55,5 @@ jobs:
         uses: EffectiveRange/version-release-github-action@v1
         with:
           release-version: '1.0.0'
-          download-name: 'MSDFtron'
+          download-pattern: "msdftron-*"
           create-latest: 'true'
